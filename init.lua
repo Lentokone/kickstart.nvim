@@ -269,6 +269,7 @@ require('lazy').setup({
   --        end,
   --    }
   --
+  { import = 'custom.plugins' },
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`.
   --
@@ -492,11 +493,13 @@ require('lazy').setup({
         ---@module 'mason.settings'
         ---@type MasonSettings
         ---@diagnostic disable-next-line: missing-fields
-        opts = { 
+        opts = {
           registries = {
             'github:mason-org/mason-registry',
-            'github:Crashdummyy/mason-registry'
-          }, },
+            'github:Crashdummyy/mason-registry',
+          },
+        },
+      },
       -- Maps LSP server names between nvim-lspconfig and Mason package names.
       'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
