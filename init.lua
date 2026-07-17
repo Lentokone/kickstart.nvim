@@ -127,6 +127,25 @@ do
   -- Enable break indent
   vim.o.breakindent = true
 
+  -- Megantically cool indentation file-based command
+  ---@param filetype table
+  ---@param Expandtab boolean
+  ---@param Tabstop integer
+  ---@param Shiftwidth integer
+  local function indent(filetype, Expandtab, Tabstop, Shiftwidth)
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = filetype,
+      callback = function()
+        vim.opt_local.expandtab = Expandtab
+        vim.opt_local.tabstop = Tabstop
+        vim.opt_local.shiftwidth = Shiftwidth
+      end,
+    })
+  end
+  indent({ 'cs', 'c', 'cpp' }, true, 4, 4)
+  indent({ 'rust' }, true, 4, 4)
+  indent({ 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' }, true, 2, 2)
+
   -- Enable undo/redo changes even after closing and reopening a file
   vim.o.undofile = true
 
@@ -749,7 +768,7 @@ do
     registries = {
       'github:mason-org/mason-registry',
       'github:Crashdummyy/mason-registry',
-    }
+    },
   }
 
   -- Ensure the servers and tools above are installed
@@ -788,6 +807,8 @@ do
         python = true,
         rust = true,
         cs = true,
+        javascript = true,
+        javascriptreact = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return { timeout_ms = 500 }

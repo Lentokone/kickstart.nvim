@@ -24,5 +24,6 @@ require('neo-tree').setup {
         ['T'] = 'open_tab_drop',
       },
     },
+    hijack_netrw_behavior = "disabled",
   },
 }
