@@ -706,6 +706,17 @@ do
     --    https://github.com/pmizio/typescript-tools.nvim
     --
     -- But for many setups, the LSP (`ts_ls`) will work just fine
+    --
+    --ts:LSP that no work with mongoose:
+    --ts_ls,
+    --vtsls,
+    --tsc,
+    --deno
+    --
+    -- Testing stupid shit. ts_ls seems to be ramping cpu usage megantically when using mongoose library,
+    -- mainly the code related to schema and schema creation
+    -- Never mind. Seems to be all the typescript-related LSP above. Issue seems to come from mongoose, not the LSPs
+
     ts_ls = {},
 
     stylua = {}, -- Used to format Lua code
